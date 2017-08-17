@@ -1,0 +1,3 @@
+[submodule "WPF"]
+	path = WPF
+	url = https://github.com/ChristieBeukman/WPF.MDI.git

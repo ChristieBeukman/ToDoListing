@@ -115,7 +115,9 @@
     <Compile Include="Services\DataAccessSupplier.cs" />
     <Compile Include="Services\IDataAccesCategory.cs" />
     <Compile Include="Services\IDataAccessSupplier.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SupplierViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

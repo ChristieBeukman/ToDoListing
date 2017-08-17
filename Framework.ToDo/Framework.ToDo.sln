@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.ToDo", "Framework.ToDo\Framework.ToDo.csproj", "{A8C2E596-8275-4D06-A6F9-AEEB43A21003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.MDI", "..\WPF\WPF.MDI\WPF.MDI.csproj", "{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8C2E596-8275-4D06-A6F9-AEEB43A21003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C2E596-8275-4D06-A6F9-AEEB43A21003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C2E596-8275-4D06-A6F9-AEEB43A21003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C2E596-8275-4D06-A6F9-AEEB43A21003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1ED569-5E0B-4DF0-8964-33AD2AAE4C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

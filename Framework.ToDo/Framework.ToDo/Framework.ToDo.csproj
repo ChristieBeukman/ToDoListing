@@ -54,6 +54,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.0-alpha\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -76,7 +78,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CategoryItem.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Item.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ItemList.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Suppliier.cs">
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ToDoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ToDoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ToDoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DataAccessCategoryItem.cs" />
+    <Compile Include="Services\DataAccessSupplier.cs" />
+    <Compile Include="Services\IDataAccesCategory.cs" />
+    <Compile Include="Services\IDataAccessSupplier.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SupplierViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +150,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\ToDoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ToDoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ToDoModel.edmx.diagram">
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -124,9 +172,21 @@
       <Name>WPF.MDI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Services\" />
+    <Content Include="Model\ToDoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ToDoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToDoModel.edmx</DependentUpon>
+      <LastGenOutput>ToDoModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

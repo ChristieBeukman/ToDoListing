@@ -1,3 +1,6 @@
 [submodule "WPF"]
 	path = WPF
 	url = https://github.com/ChristieBeukman/WPF.MDI.git
+[submodule "Style"]
+	path = Style
+	url = git@github.com:ChristieBeukman/Style.git

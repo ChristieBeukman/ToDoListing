@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Framework.ToDo.View"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Framework.ToDo.View.MainSupplierView"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" Width="370">
+                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:GalaSoft_MvvmLight_Command="http://www.galasoft.ch/mvvmlight"
+             mc:Ignorable="d" Width="346" Height="265">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/StylesDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
@@ -298,8 +300,8 @@
     <UserControl.DataContext>
         <Binding Mode="OneWay" Path="SupplierVM" Source="{StaticResource Locator}"/>
     </UserControl.DataContext>
-    <Grid>
-        <GroupBox Style="{DynamicResource GroupBoxStyle}" Margin="10,0,15,131">
+    <Grid Height="262" VerticalAlignment="Top" Margin="1,3,-1,0">
+        <GroupBox Style="{DynamicResource GroupBoxStyle}" Margin="10,0,0,0" Height="255" VerticalAlignment="Top" HorizontalAlignment="Left" Width="331">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="150" Width="248">
                 <Grid Margin="0,0,-65,0" HorizontalAlignment="Left" Width="313">
                     <Grid.ColumnDefinitions>
@@ -318,7 +320,46 @@
                             <DropShadowEffect Color="White" BlurRadius="0" ShadowDepth="1"/>
                         </Label.Effect>
                     </Label>
-                    <ComboBox Style="{DynamicResource ComboBoxStyle}" Height="29" HorizontalContentAlignment="Center" Grid.Column="1" VerticalContentAlignment="Center" Margin="10,11,-143,10" Visibility="{Binding SupplierVM.VisibleCOntrolEnabled, Source={StaticResource Locator}}" ItemsSource="{Binding Suppliers}" SelectedIndex="0" SelectedItem="{Binding SupplierVM.SelectedSupplier, Source={StaticResource Locator}}" DisplayMemberPath="Name" Foreground="White" FontFamily="Constantia" FontSize="14"/>
+                    <ComboBox Style="{DynamicResource ComboBoxStyle}"
+                              Height="29" 
+                              HorizontalContentAlignment="Center"
+                              Grid.Column="1" 
+                              VerticalContentAlignment="Center"
+                              Margin="10,11,-143,10"
+                              Visibility="{Binding SupplierVM.VisibleCOntrolEnabled, Source={StaticResource Locator}}" 
+                              ItemsSource="{Binding Suppliers}" 
+                              SelectedIndex="0" SelectedItem="{Binding SupplierVM.SelectedSupplier, Source={StaticResource Locator}}"
+                              DisplayMemberPath="Name" 
+                              Foreground="White"
+                              FontFamily="Constantia" 
+                              FontSize="14"/>
+
+                    <TextBox Grid.Column="1"
+                             Margin="10,9,-133,6"
+                             Grid.Row="1"
+                             Height="35"
+                             Style="{DynamicResource GlassTextBox}" 
+                             Width="125"
+                             HorizontalContentAlignment="Right" 
+                             VerticalContentAlignment="Center"
+                             VerticalAlignment="Center" 
+                             HorizontalAlignment="Center" 
+                             Text="{Binding SupplierVM.SelectedSupplier.Description, Source={StaticResource Locator}}"
+                             IsReadOnly="{Binding ControlIsReadOnly}"
+                             FontFamily="Constantia" 
+                             FontSize="14" 
+                             FontWeight="Bold" 
+                             Foreground="#FFFFFEFE" 
+                             Background="Black">
+                        <TextBox.Effect>
+                            <DropShadowEffect BlurRadius="0" Color="#FF020202" ShadowDepth="1"/>
+                        </TextBox.Effect>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding SupplierVM.ControlActivatorCommand, Source={StaticResource Locator}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
                     <Label Content="Location&#xA;" 
                         Grid.Column="0" 
                         Grid.Row="2" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Foreground="#FF040404" Style="{DynamicResource LabelStyle}" FontSize="18" FontFamily="Stencil" Margin="0,6,1,10" Height="34">
@@ -333,7 +374,43 @@
                             <DropShadowEffect Color="White" BlurRadius="0" ShadowDepth="1"/>
                         </Label.Effect>
                     </Label>
+                    <TextBox Grid.Column="1" Margin="11,5,-132,10" Grid.Row="2" Height="35" Style="{DynamicResource GlassTextBox}" Width="125" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding SupplierVM.SelectedSupplier.Location, Source={StaticResource Locator}}" IsReadOnly="{Binding SupplierVM.ControlIsReadOnly, Source={StaticResource Locator}}" Background="Black" Foreground="White" FontFamily="Constantia" FontSize="14" FontWeight="Bold">
+                        <TextBox.Effect>
+                            <DropShadowEffect BlurRadius="0" ShadowDepth="1"/>
+                        </TextBox.Effect>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <GalaSoft_MvvmLight_Command:EventToCommand Command="{Binding SupplierVM.ControlActivatorCommand, Source={StaticResource Locator}}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <TextBox Grid.Column="1" Margin="10,10,-143,5" Height="35" Style="{DynamicResource GlassTextBox}" Width="140" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding HiddenControlEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                 </Grid>
+                <GroupBox Style="{DynamicResource GroupBoxStyle}" Margin="80,165,-52,-65" Height="50" HorizontalAlignment="Left" Width="220">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="280" Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="90"/>
+                            <ColumnDefinition Width="90"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Add" Style="{DynamicResource GlassButton}" Height="40" Background="#FF31FF03" Foreground="White" FontFamily="Arial Rounded MT Bold" FontWeight="Bold" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding OpenAddSupplierView}">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="1"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button Content="Edit" Style="{DynamicResource GlassButton}" Height="40" Background="Yellow" Foreground="White" FontFamily="Arial Rounded MT Bold" FontWeight="Bold" Grid.Column="1" Width="40" Margin="0" HorizontalAlignment="Center">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="1"/>
+                            </Button.Effect>
+                        </Button>
+                        <Button Content="Delete" Style="{DynamicResource GlassButton}" Height="40" Background="#FFFB0F04" Foreground="White" FontFamily="Arial Rounded MT Bold" FontWeight="Bold" Grid.Column="2" Width="40" Margin="5,0" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding SupplierVM.DeleteSupplierCommand, Source={StaticResource Locator}}">
+                            <Button.Effect>
+                                <DropShadowEffect ShadowDepth="1" BlurRadius="1"/>
+                            </Button.Effect>
+                        </Button>
+                    </Grid>
+                </GroupBox>
             </Grid>
         </GroupBox>
     </Grid>

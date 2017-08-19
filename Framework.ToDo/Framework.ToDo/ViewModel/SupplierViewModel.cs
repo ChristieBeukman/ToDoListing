@@ -239,7 +239,7 @@ namespace Framework.ToDo.ViewModel
             Sup = new Suppliier();
             OldSupplier = new Suppliier();
             AddSupplierCommand = new RelayCommand(AddSupplier);
-            //OpenAddSupplierView = new RelayCommand(OpenAddSupplierWindow);
+            OpenAddSupplierView = new RelayCommand(OpenAddSupplierWindow);
             DeleteSupplierCommand = new RelayCommand(DeleteSupplier);
             ControlActivatorCommand = new RelayCommand(ToggleControl);
             UpdateSupplierCommand = new RelayCommand(UpdateSupplier);
@@ -306,11 +306,11 @@ namespace Framework.ToDo.ViewModel
         /// <summary>
         /// Opens the Add Supplier Window
         /// </summary>
-        //void OpenAddSupplierWindow()
-        //{
-        //    var win = new AddSupplierWindowView();
-        //    win.ShowDialog();
-        //}
+        void OpenAddSupplierWindow()
+        {
+            var win = new AddSupplierView();
+            win.ShowDialog();
+        }
 
         /// <summary>
         /// delete selected record

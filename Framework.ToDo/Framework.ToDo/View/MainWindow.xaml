@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Framework.ToDo.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="Main" Height="350" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" WindowStyle="ThreeDBorderWindow" BorderThickness="0" WindowStartupLocation="CenterScreen" WindowState="Maximized" Cursor="ArrowCD" Width="459">
+    <Window.Resources>
+        <ResourceDictionary>
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#FF232125">
+        <StackPanel>
+            <Button Content="a"/>
+            <TextBox />
+            <ComboBox/>
+            <GroupBox/>
+        </StackPanel>
     </Grid>
 </Window>

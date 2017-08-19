@@ -10,6 +10,12 @@
   <Application.Resources>
     <ResourceDictionary>
       <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:Framework.ToDo.ViewModel" />
-    </ResourceDictionary>
-  </Application.Resources>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Styles/StylesDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+            
+        
+    </Application.Resources>
 </Application>

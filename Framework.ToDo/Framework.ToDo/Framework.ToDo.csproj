@@ -126,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MainCategoryItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainSupplierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +144,9 @@
     </Compile>
     <Compile Include="View\AddSupplierView.xaml.cs">
       <DependentUpon>AddSupplierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainCategoryItemView.xaml.cs">
+      <DependentUpon>MainCategoryItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainSupplierView.xaml.cs">
       <DependentUpon>MainSupplierView.xaml</DependentUpon>

@@ -12,6 +12,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid Background="#FF232125">
-        <local:MainSupplierView Margin="0,10,0,-10"/>
+        <local:MainSupplierView Margin="0,10,0,-10" d:IsHidden="True"/>
+        <local:MainCategoryItemView Margin="-331,37,436,17"/>
     </Grid>
 </Window>

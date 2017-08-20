@@ -22,8 +22,8 @@ namespace Framework.ToDo.ViewModel
         private CategoryItem _Category;
         private CategoryItem _SelectedCategory;
         private CategoryItem _Cat;
-        private bool controlIsReadOnly = true;
-        private bool hiddenControlEnabled = false;
+        private bool controlIsReadOnly = false;
+        private bool hiddenControlEnabled = true;
         private bool visibleCOntrolEnabled = true;
         string catName;
         string _CatDescription;
@@ -75,7 +75,7 @@ namespace Framework.ToDo.ViewModel
             }
         }
 
-        public bool ControlIsReadOnly
+        public bool IsReadOnlyCatControl
         {
             get
             {
@@ -89,7 +89,7 @@ namespace Framework.ToDo.ViewModel
             }
         }
 
-        public bool HiddenControlEnabled
+        public bool HiddenCatControl
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Framework.ToDo.ViewModel
             }
         }
 
-        public bool VisibleCOntrolEnabled
+        public bool VisibleCatCOntrol
         {
             get
             {
@@ -191,7 +191,11 @@ namespace Framework.ToDo.ViewModel
         #endregion Public Properties
 
         #region Commands
-
+        public RelayCommand AddSCategoryCommand { get; set; }
+        public RelayCommand OpenAddSCategoryCommandView { get; set; }
+        public RelayCommand DeleteCategoryCommand{ get; set; }
+        public RelayCommand CategoryControlActivatorCommand { get; set; }
+        public RelayCommand UpdateCategoryCommand { get; set; }
         #endregion Commands
 
 
@@ -209,6 +213,13 @@ namespace Framework.ToDo.ViewModel
             OldCategory = new CategoryItem();
 
             GetCategories();
+
+            //Commands
+            AddSCategoryCommand = new RelayCommand(AddCategory);
+            OpenAddSCategoryCommandView = new RelayCommand(OpenAddCategoryWindow);
+            DeleteCategoryCommand = new RelayCommand(DeleteCategory);
+            CategoryControlActivatorCommand = new RelayCommand(ToggleControl);
+            UpdateCategoryCommand = new RelayCommand(UpdateCategory);
         }
 
 
@@ -222,17 +233,17 @@ namespace Framework.ToDo.ViewModel
         /// </summary>
         void ToggleControl()
         {
-            if (VisibleCOntrolEnabled == false)
+            if (VisibleCatCOntrol == false)
             {
-                ControlIsReadOnly = true;
-                HiddenControlEnabled = false;
-                VisibleCOntrolEnabled = true;
+                IsReadOnlyCatControl = true;
+                HiddenCatControl = false;
+                VisibleCatCOntrol = true;
             }
-            else if (VisibleCOntrolEnabled == true)
+            else if (VisibleCatCOntrol == true)
             {
-                ControlIsReadOnly = false;
-                HiddenControlEnabled = true;
-                VisibleCOntrolEnabled = false;
+                IsReadOnlyCatControl = false;
+                HiddenCatControl = true;
+                VisibleCatCOntrol = false;
 
                 CatDescription = SelectedCategory.Description;
                 catName = SelectedCategory.Name;
@@ -306,7 +317,7 @@ namespace Framework.ToDo.ViewModel
 
         }
 
-        void UpdateSupplier()
+        void UpdateCategory()
         {
             if (SelectedCategory != null)
             {
